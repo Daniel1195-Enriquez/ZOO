@@ -7,23 +7,17 @@
 
             <div class="card shadow">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Nueva cita médica</h4>
+                    <h4 class="mb-0">Información de la cita médica</h4>
                 </div>
 
-                <div class="card-body">
-                    <form action="{{route("historial.store")}}" method="post">
-                        @csrf
-
+                <div class="card-body">                    
                         <div class="mb-3">
                             <label class="form-label">Animal</label>
-                            <select class="form-select" name="id_animal">
-                                <option value="">Seleccione un nombre</option>                                
-                                @foreach($animales as $animal)
-                                    <option value="{{$animal->id_animal}}">
-                                        {{$animal->nombre}}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input type="text"
+                                   class="form-control"
+                                   name="nombre"
+                                   value="{{$animales->firstWhere('id_animal', $historiales->id_animal)->nombre}}"
+                                   readonly>                            
                         </div>
                       
 
@@ -32,7 +26,9 @@
                             <input 
                                 type="date" 
                                 class="form-control" 
-                                name="fecha_revision">
+                                name="fecha_revision"
+                                value="{{$historiales->fecha_revision}}"
+                                readonly>
                         </div>
 
                          <div class="mb-3">
@@ -40,7 +36,9 @@
                             <input 
                                 type="text" 
                                 class="form-control" 
-                                name="diagnostico">
+                                name="diagnostico"
+                                value="{{$historiales->diagnostico}}"
+                                readonly>
                         </div>
                         
                         <div class="mb-3">
@@ -48,20 +46,15 @@
                             <input 
                                 type="number" 
                                 class="form-control" 
-                                name="costo_atencion">
+                                name="costo_atencion"
+                                value="{{$historiales->costo_atencion}}"
+                                readonly>
                         </div>
 
-                        <div class="d-flex justify-content-end">
-                            <a href="{{route('historial.index')}}" type="button" class="btn btn-danger me-2">
-                                Cancelar
-                            </a>
-
-                            <button type="submit" class="btn btn-success">
-                                Guardar historial
-                            </button>
-                        </div>
-
-                    </form>
+                        
+                        <a href="{{route('historial.index')}}" type="button" class="btn btn-info me-2">
+                            Cancelar
+                        </a>
                 </div>
             </div>
 

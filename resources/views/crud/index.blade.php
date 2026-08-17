@@ -5,12 +5,12 @@
         <div class="row mt-4">
             <div class="col">
                 <h2>Mi crud del zoologico</h2>
-                <a href="{{route('historial.index')}}" class="btn btn-success">Historial médico</a>
-                <a href="{{route('asignacion.index')}}" class="btn btn-success">Asignación</a>
-                <a href="{{route('animales.index')}}" class="btn btn-success">Animales</a>
-                <a href="{{route('cuidadores.index')}}" class="btn btn-success">Cuidadores</a>
-                <a href="{{route('habitats.index')}}" class="btn btn-success">Habitats</a>
                 <a href="{{route('especies.index')}}" class="btn btn-success">Especies</a>
+                <a href="{{route('habitats.index')}}" class="btn btn-success">Habitats</a>
+                <a href="{{route('cuidadores.index')}}" class="btn btn-success">Cuidadores</a>
+                <a href="{{route('animales.index')}}" class="btn btn-success">Animales</a>
+                <a href="{{route('asignacion.index')}}" class="btn btn-success">Asignación</a>
+                <a href="{{route('historial.index')}}" class="btn btn-success">Historial médico</a>
                 <hr>                
 
             </div>

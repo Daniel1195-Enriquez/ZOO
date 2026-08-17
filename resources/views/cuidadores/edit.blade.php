@@ -7,30 +7,40 @@
 
             <div class="card shadow">
                 <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">Ingresar nuevo Cuidador</h4>
+                    <h4 class="mb-0">Editar al cuidador</h4>
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route("cuidadores.store")}}" method="post">
+                    <!--Cambiar ruta a update-->
+                    <form action="{{route("cuidadores.update", $cuidador->id_cuidador)}}" method="post">
                         @csrf
-                        @method("post")
+                        @method("put")
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
                             <input 
                                 type="text" 
                                 class="form-control" 
-                                name="nombre">
+                                name="nombre"
+                                value={{"$cuidador->nombre"}}>
                         </div>
                       
 
                         <div class="mb-3">
                             <label class="form-label">Especialidad</label>
-                            <select class="form-select" name="especialidad">
-                                <option value="">Seleccione</option>
-                                <option value="Mamíferos Grandes">Mamíferos Grandes</option>
-                                <option value="Aves y Reptiles">Aves y Reptiles</option>
-                                <option value="Animales Acuáticos">Animales Acuáticos</option>
-                                <option value="Insectos y Anfibios">Insectos y Anfibios</option>
+                            <!--logica para jalar la información seleccionada-->
+                            <select class="form-select" name="especialidad">                                
+                                <option value="Mamíferos Grandes" @selected($cuidador->especialidad == 'Mamíferos Grandes')>
+                                    Mamíferos Grandes
+                                </option>
+                                <option value="Aves y Reptiles" @selected($cuidador->especialidad == 'Aves y Reptiles')>
+                                    Aves y Reptiles
+                                </option>
+                                <option value="Animales Acuáticos" @selected($cuidador->especialidad == 'Animales Acuáticos')>
+                                    Animales Acuáticos
+                                </option>
+                                <option value="Insectos y Anfibios" @selected($cuidador->especialidad == 'Insectos y Anfibios')>
+                                    Insectos y Anfibios
+                                </option>
                             </select>
                         </div>
 
@@ -39,7 +49,8 @@
                             <input 
                                 type="number" 
                                 class="form-control" 
-                                name="salario">
+                                name="salario"
+                                value={{"$cuidador->salario"}}>
                         </div>
 
                         <div class="d-flex justify-content-end">
@@ -48,7 +59,7 @@
                             </a>
 
                             <button type="submit" class="btn btn-success">
-                                Guardar cuidador
+                                Actualizar cuidador
                             </button>
                         </div>
 

@@ -8,7 +8,11 @@ class AsignacionCuidador extends Model
 {
     protected $table = 'asignacion_cuidadores';
 
+    public $incrementing = false;
+
     public $timestamps = false;
+
+    protected $primaryKey = null;
 
     protected $fillable = [
         'id_habitat',

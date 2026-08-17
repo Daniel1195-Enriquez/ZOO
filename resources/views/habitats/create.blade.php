@@ -11,21 +11,21 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{ route("habitats.store") }}" method="post">
                         @csrf
-
+                        @method("post")
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
                             <input 
                                 type="text" 
                                 class="form-control" 
-                                name="nombre_comun"
+                                name="nombre"
                                 placeholder="Ej. Polar">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Clima</label>
-                            <select class="form-select" name="estado_conservacion">
+                            <select class="form-select" name="clima">
                                 <option value="">Seleccione</option>
                                 <option value="Vulnerable">Calido y frio</option>
                                 <option value="Frío Extremo">Frío Extremo</option>
@@ -43,12 +43,9 @@
                             <input 
                                 type="number" 
                                 class="form-control" 
-                                name="nombre_cientifico"
+                                name="capacidad_max"
                                 >
-                        </div>
-
-                        
-
+                        </div>                      
 
                         <div class="d-flex justify-content-end">
                             <a href="{{route('habitats.index')}}" type="button" class="btn btn-danger me-2">

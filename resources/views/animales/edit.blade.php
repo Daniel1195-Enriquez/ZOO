@@ -28,22 +28,28 @@
                         
 
                             <div class="mb-3">
-                                <label class="form-label">Id Especie</label>
-                                <select class="form-select" name="id_especie" id="id_especie">                                                                  
-                                    <option value="M" {{ $animal->genero == 'M' ? 'selected' : '' }}>
-                                        M
-                                    </option>
-                                    <option value="F" {{ $animal->genero == 'F' ? 'selected' : '' }}>
-                                        F
-                                    </option>
-                                </select>
+                                <label class="form-label">Especie</label>
+                                <select class="form-select" name="id_especie">
+                                    <option value="">Seleccione una especie</option>
+                                        @foreach($especies as $especie)
+                                            <option value="{{ $especie->id_especie }}"
+                                                @selected($animal->id_especie == $especie->id_especie)>
+                                                {{ $especie->nombre_comun }}
+                                            </option>
+                                        @endforeach
                                 </select>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Id habitat</label>
-                                <select class="form-select" name="">
-                                    <option value="">Seleccione</option>
+                                <label class="form-label">Habitat</label>                                
+                                <select class="form-select" name="id_habitat">
+                                    <option value="">Seleccione un habitat</option>
+                                    @foreach($habitats as $habitat)
+                                        <option value="{{$habitat->id_habitat}}"
+                                            @selected($animal->id_habitat == $habitat->id_habitat)>
+                                            {{$habitat->nombre}}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -52,9 +58,8 @@
                                 <input 
                                     type="date" 
                                     class="form-control" 
-                                    name="nombre_cientifico"
-                                    id='fecha_nacimiento'
-                                    nombre='fecha_nacimiento'
+                                    name="fecha_nacimiento"
+                                    id='fecha_nacimiento'                                    
                                     value="{{$animal-> fecha_nacimiento}}"
                                     >
                             </div>
@@ -78,10 +83,9 @@
                                 <input 
                                     type="number" 
                                     class="form-control" 
-                                    name="nombre_cientifico"
+                                    name="peso_kg"
                                     step="0.01"
-                                    id='peso_kg'
-                                    nombre='peso_kg'
+                                    id='peso_kg'                                    
                                     value="{{$animal-> peso_kg}}"
                                     >
                             </div>
@@ -92,7 +96,7 @@
                                 </a>
 
                                 <button type="submit" class="btn btn-success">
-                                    Guardar animal
+                                    Actulizar animal
                                 </button>
                             </div>
 

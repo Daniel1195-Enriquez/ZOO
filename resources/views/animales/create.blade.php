@@ -11,29 +11,39 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{ route("animales.store")}}" method="post">
                         @csrf
-
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
                             <input 
                                 type="text" 
                                 class="form-control" 
-                                name="nombre_comun">
+                                name="nombre">
                         </div>
                       
 
                         <div class="mb-3">
-                            <label class="form-label">Id Especie</label>
-                            <select class="form-select" name="">
-                                <option value="">Seleccione</option>
+                            <label class="form-label">Especie</label>
+                            <select class="form-select" name="id_especie">
+                                <option value="">Seleccione una especie</option>
+                                <!--Logica para mandar llamar la información de los controladores, seleccionando id y nombre-->
+                                @foreach($especies as $especie)
+                                    <option value="{{$especie->id_especie}}">
+                                        {{$especie->nombre_comun}}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Id habitat</label>
-                            <select class="form-select" name="">
-                                <option value="">Seleccione</option>
+                            <select class="form-select" name="id_habitat">
+                                <option value="">Seleccione un habitat</option>
+                                @foreach($habitats as $habitat)
+                                    <option value="{{$habitat->id_habitat}}">
+                                        {{$habitat->nombre}}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -42,12 +52,12 @@
                             <input 
                                 type="date" 
                                 class="form-control" 
-                                name="nombre_cientifico">
+                                name="fecha_nacimiento">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Género</label>
-                            <select class="form-select" name="">
+                            <select class="form-select" name="genero">
                                 <option value="">Seleccione</option>
                                 <option value="M">M</option>
                                 <option value="F">F</option>
@@ -59,7 +69,7 @@
                             <input 
                                 type="number" 
                                 class="form-control" 
-                                name="nombre_cientifico"
+                                name="peso_kg"
                                 step="0.01"
                                 >
                         </div>
